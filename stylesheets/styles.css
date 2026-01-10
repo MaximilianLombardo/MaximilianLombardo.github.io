@@ -26,16 +26,21 @@ h1 {
 
 h2 {
   color:#F7F2E8;
+  font-size: 22px;
   font-weight: 500;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #2A2A2E;
 }
 
 h3, h4, h5, h6 {
-  color:rgba(247, 242, 232, 0.9);
+  color:rgba(247, 242, 232, 0.85);
+  font-size: 18px;
   font-weight: 500;
 }
 
 a {
-  color:#59C6FF;
+  color:#FF6B73;
   text-decoration:none;
 }
 
