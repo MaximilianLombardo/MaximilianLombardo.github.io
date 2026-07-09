@@ -68,6 +68,11 @@
     letter-spacing: 0.12em;
     margin-left: 22px;
     transition: color 0.15s;
+    /* Enlarge tap target to ≥44px without changing visual size */
+    padding-top: 17px;
+    padding-bottom: 17px;
+    margin-top: -17px;
+    margin-bottom: -17px;
   }
 
   .nlinks a:hover {
@@ -92,6 +97,11 @@
       margin-left: 14px;
       font-size: 9px;
       letter-spacing: 0.08em;
+      /* Keep enlarged tap target on mobile */
+      padding-top: 17px;
+      padding-bottom: 17px;
+      margin-top: -17px;
+      margin-bottom: -17px;
     }
 
     /* Hide PUBLICATIONS on very small screens */
