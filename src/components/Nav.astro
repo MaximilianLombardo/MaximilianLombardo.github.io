@@ -33,6 +33,24 @@
       <a href="#contact">CONTACT</a>
       <a href="/resume.pdf" class="res">RESUME ↓</a>
     </span>
+
+    <button class="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+  </div>
+
+  <div class="mobile-menu" id="mobile-menu">
+    <span class="mm-label">Work</span>
+    <a class="sub" href="/work/biohub">Biohub</a>
+    <a class="sub" href="/work/kallyope">Kallyope</a>
+    <a class="sub" href="/work/ibm">IBM · CAS</a>
+    <a class="sub" href="/work/ventures">Ventures</a>
+    <span class="mm-div"></span>
+    <a href="#pubs">Publications &amp; Workshops</a>
+    <a href="#contact">Contact</a>
+    <a class="mm-res" href="/resume.pdf">Resume ↓</a>
   </div>
 </nav>
 
@@ -228,35 +246,139 @@
     background: var(--line-faint);
   }
 
-  @media (max-width: 520px) {
+  /* Hamburger + mobile menu (hidden on desktop) */
+  .menu-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 40px;
+    height: 40px;
+    margin-right: -8px;
+    padding: 0;
+    background: none;
+    border: 0;
+    cursor: pointer;
+  }
+
+  .bar {
+    display: block;
+    width: 21px;
+    height: 2px;
+    margin: 0 auto;
+    background: var(--ww);
+    border-radius: 2px;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+  }
+
+  .mobile-menu {
+    display: none;
+  }
+
+  @media (max-width: 600px) {
     .wrap {
       padding: 0 20px;
     }
 
-    .dropdown {
-      margin-left: 14px;
-    }
-
-    .nlinks > a {
-      margin-left: 14px;
-      font-size: 9px;
-      letter-spacing: 0.08em;
-      /* Keep enlarged tap target on mobile */
-      padding-top: 17px;
-      padding-bottom: 17px;
-      margin-top: -17px;
-      margin-bottom: -17px;
-    }
-
-    /* Hide PUBLICATIONS on very small screens */
-    .nlinks > a:nth-child(2) {
+    /* Swap the inline links for a hamburger menu */
+    .nlinks {
       display: none;
+    }
+
+    .menu-toggle {
+      display: flex;
+    }
+
+    .mobile-menu {
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: var(--bg);
+      border-bottom: 1px solid var(--line);
+      padding: 8px 20px 20px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-10px);
+      transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s;
+    }
+
+    nav.nav-open .mobile-menu {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .mm-label {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--t3);
+      padding: 10px 0 6px;
+    }
+
+    .mm-div {
+      height: 1px;
+      background: var(--line);
+      margin: 8px 0;
+    }
+
+    .mobile-menu a {
+      color: var(--t2);
+      text-decoration: none;
+      font-family: var(--font-mono);
+      font-size: 13px;
+      letter-spacing: 0.04em;
+      padding: 13px 2px;
+      border-bottom: 1px solid var(--line-faint);
+      transition: color 0.15s;
+    }
+
+    .mobile-menu a:hover,
+    .mobile-menu a:active {
+      color: var(--ww);
+    }
+
+    .mobile-menu a.sub {
+      padding-left: 16px;
+      font-size: 12px;
+      color: var(--t3);
+    }
+
+    .mobile-menu a.sub:hover {
+      color: var(--ww);
+    }
+
+    .mobile-menu a.mm-res {
+      color: var(--red);
+      border-bottom: 0;
+    }
+
+    /* hamburger morphs into an X when open */
+    nav.nav-open .bar:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+
+    nav.nav-open .bar:nth-child(2) {
+      opacity: 0;
+    }
+
+    nav.nav-open .bar:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
     }
   }
 </style>
 
 <script>
+  const nav = document.querySelector('nav')
   const dd = document.querySelector('.dropdown')
+  const toggle = document.querySelector('.menu-toggle')
+
+  // Desktop: Work dropdown
   if (dd) {
     const trigger = dd.querySelector('.trigger')
     trigger?.addEventListener('click', () => {
@@ -269,12 +391,38 @@
         trigger?.setAttribute('aria-expanded', 'false')
       }
     })
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && dd.classList.contains('open')) {
-        dd.classList.remove('open')
-        trigger?.setAttribute('aria-expanded', 'false')
-        ;(trigger as HTMLElement)?.focus()
+  }
+
+  // Mobile: hamburger menu
+  if (nav && toggle) {
+    const closeMenu = () => {
+      nav.classList.remove('nav-open')
+      toggle.setAttribute('aria-expanded', 'false')
+    }
+    toggle.addEventListener('click', () => {
+      const open = nav.classList.toggle('nav-open')
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false')
+    })
+    // Close after choosing a destination
+    nav.querySelectorAll('.mobile-menu a').forEach((a) =>
+      a.addEventListener('click', closeMenu)
+    )
+    // Close when tapping outside the nav
+    document.addEventListener('click', (e) => {
+      if (nav.classList.contains('nav-open') && !nav.contains(e.target as Node)) {
+        closeMenu()
       }
     })
   }
+
+  // Escape closes either menu
+  document.addEventListener('keydown', (e) => {
+    if (e.key !== 'Escape') return
+    dd?.classList.remove('open')
+    dd?.querySelector('.trigger')?.setAttribute('aria-expanded', 'false')
+    if (nav?.classList.contains('nav-open')) {
+      nav.classList.remove('nav-open')
+      toggle?.setAttribute('aria-expanded', 'false')
+    }
+  })
 </script>
