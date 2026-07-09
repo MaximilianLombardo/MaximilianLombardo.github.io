@@ -1,13 +1,13 @@
 /* ─── Fontsource: self-hosted, no external network requests ─── */
 /* Inter weights: 200, 300, 400, 500, 600 */
-@import '@fontsource/inter/200.css';
-@import '@fontsource/inter/300.css';
-@import '@fontsource/inter/400.css';
-@import '@fontsource/inter/500.css';
-@import '@fontsource/inter/600.css';
+@import '@fontsource/inter/latin-200.css';
+@import '@fontsource/inter/latin-300.css';
+@import '@fontsource/inter/latin-400.css';
+@import '@fontsource/inter/latin-500.css';
+@import '@fontsource/inter/latin-600.css';
 /* JetBrains Mono weights: 400, 600 */
-@import '@fontsource/jetbrains-mono/400.css';
-@import '@fontsource/jetbrains-mono/600.css';
+@import '@fontsource/jetbrains-mono/latin-400.css';
+@import '@fontsource/jetbrains-mono/latin-600.css';
 
 /* ─── Design tokens ─── */
 :root {
@@ -16,7 +16,7 @@
   --t2:   #C4BFB3;   /* body text */
   --t3:   #8A8680;   /* labels / meta */
   --line: #1F1F1F;   /* hairline */
-  --grid: rgba(247, 242, 232, 0.045);
+  --grid: rgba(247,242,232,.045);
   --red:  #FF1E2D;   /* accent */
 
   --font-sans: 'Inter', sans-serif;
