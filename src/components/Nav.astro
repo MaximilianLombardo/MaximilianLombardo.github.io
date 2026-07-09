@@ -18,7 +18,17 @@
       </svg>
     </a>
     <span class="nlinks">
-      <a href="#work">WORK</a>
+      <span class="dropdown">
+        <button type="button" class="trigger" aria-haspopup="true" aria-expanded="false">
+          WORK <span class="caret" aria-hidden="true">▾</span>
+        </button>
+        <div class="menu">
+          <a href="/work/biohub">Biohub</a>
+          <a href="/work/kallyope">Kallyope</a>
+          <a href="/work/ibm">IBM · CAS</a>
+          <a href="/work/ventures">Ventures</a>
+        </div>
+      </span>
       <a href="#pubs">PUBLICATIONS</a>
       <a href="#contact">CONTACT</a>
       <a href="/resume.pdf" class="res">RESUME ↓</a>
@@ -85,7 +95,7 @@
     gap: 0;
   }
 
-  .nlinks a {
+  .nlinks > a {
     color: var(--t3);
     text-decoration: none;
     font-family: var(--font-mono);
@@ -102,17 +112,120 @@
     margin-bottom: -17px;
   }
 
-  .nlinks a:hover {
+  .nlinks > a:hover {
     color: var(--ww);
     text-decoration: none;
   }
 
-  .nlinks a.res {
+  .nlinks > a.res {
     color: var(--red);
   }
 
-  .nlinks a.res:hover {
+  .nlinks > a.res:hover {
     color: var(--ww);
+  }
+
+  /* Work dropdown */
+  .dropdown {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    margin-left: 22px;
+  }
+
+  .trigger {
+    background: none;
+    border: 0;
+    cursor: pointer;
+    color: var(--t3);
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    transition: color 0.15s;
+    /* match nav-link tap target */
+    padding: 17px 0;
+    margin: -17px 0;
+  }
+
+  .trigger:hover,
+  .dropdown:focus-within .trigger,
+  .dropdown.open .trigger {
+    color: var(--ww);
+  }
+
+  .caret {
+    font-size: 8px;
+    transition: transform 0.2s ease;
+  }
+
+  .dropdown.open .caret,
+  .dropdown:focus-within .caret {
+    transform: rotate(180deg);
+  }
+
+  .menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    margin-top: 8px;
+    min-width: 150px;
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 6px;
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-4px);
+    transition: opacity 0.15s ease, transform 0.15s ease, visibility 0.15s;
+    z-index: 60;
+  }
+
+  .dropdown.open > .menu,
+  .dropdown:focus-within > .menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  @media (hover: hover) {
+    .dropdown:hover > .menu {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .dropdown:hover .caret {
+      transform: rotate(180deg);
+    }
+  }
+
+  .menu a {
+    color: var(--t3);
+    text-decoration: none;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    padding: 9px 12px;
+    border-radius: 5px;
+    white-space: nowrap;
+    transition: color 0.15s, background 0.15s;
+    /* reset the tap-target padding inherited from .nlinks > a */
+    margin: 0;
+  }
+
+  .menu a:hover,
+  .menu a:focus-visible {
+    color: var(--ww);
+    background: var(--line-faint);
   }
 
   @media (max-width: 520px) {
@@ -120,7 +233,11 @@
       padding: 0 20px;
     }
 
-    .nlinks a {
+    .dropdown {
+      margin-left: 14px;
+    }
+
+    .nlinks > a {
       margin-left: 14px;
       font-size: 9px;
       letter-spacing: 0.08em;
@@ -132,8 +249,32 @@
     }
 
     /* Hide PUBLICATIONS on very small screens */
-    .nlinks a:nth-child(2) {
+    .nlinks > a:nth-child(2) {
       display: none;
     }
   }
 </style>
+
+<script>
+  const dd = document.querySelector('.dropdown')
+  if (dd) {
+    const trigger = dd.querySelector('.trigger')
+    trigger?.addEventListener('click', () => {
+      const open = dd.classList.toggle('open')
+      trigger.setAttribute('aria-expanded', open ? 'true' : 'false')
+    })
+    document.addEventListener('click', (e) => {
+      if (!dd.contains(e.target as Node)) {
+        dd.classList.remove('open')
+        trigger?.setAttribute('aria-expanded', 'false')
+      }
+    })
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && dd.classList.contains('open')) {
+        dd.classList.remove('open')
+        trigger?.setAttribute('aria-expanded', 'false')
+        ;(trigger as HTMLElement)?.focus()
+      }
+    })
+  }
+</script>
