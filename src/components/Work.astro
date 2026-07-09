@@ -3,6 +3,7 @@ const roles = [
   {
     org: 'Biohub',
     orgSuffix: ' / CZI',
+    orgUrl: 'https://biohub.org/',
     when: 'CURRENT',
     whenRed: true,
     role: 'Product for AI research & cell science. Defined vision for CELLxGENE; delivered foundation models to the Virtual Cells Platform; led the 0→1 automated annotation engine; authored biosafety briefings presented to the Frontier Model Forum.',
@@ -11,6 +12,7 @@ const roles = [
   {
     org: 'Kallyope',
     orgSuffix: '',
+    orgUrl: 'https://kallyope.com/',
     when: 'COMPUTATIONAL SCIENTIST',
     whenRed: false,
     role: 'ML for single-cell genomics in drug discovery: gut-brain axis program, strategic partnerships, co-authored publication in Cell Metabolism.',
@@ -19,6 +21,7 @@ const roles = [
   {
     org: 'IBM · CAS',
     orgSuffix: '',
+    orgUrl: 'https://research.ibm.com/publications/overview-the-centre-for-advanced-studies',
     when: 'ML RESEARCH INTERN',
     whenRed: false,
     role: 'Frameworks for multi-omics disease research.',
@@ -39,7 +42,9 @@ const roles = [
   <div class="exp">
     <div>
       <div class="org">
-        <a href={`/work/${r.slug}`}>{r.org}</a>
+        {r.orgUrl
+          ? <a href={r.orgUrl} target="_blank" rel="noopener noreferrer">{r.org}</a>
+          : r.org}
         {r.orgSuffix && <span class="red">{r.orgSuffix}</span>}
       </div>
       <div class={`when${r.whenRed ? ' when-red' : ''}`}>{r.when}</div>
