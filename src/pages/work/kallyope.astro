@@ -1,0 +1,202 @@
+---
+import Base from '../../layouts/Base.astro'
+import Footer from '../../components/Footer.astro'
+---
+
+<Base
+  title="Kallyope — Maximilian Lombardo"
+  description="Full detail on Maximilian Lombardo's computational scientist work at Kallyope: single-cell genomics, gut-brain axis research, strategic partnerships, and co-authored Cell Metabolism publication."
+>
+  <div class="wrap">
+    <a href="/" class="back">← Back to home</a>
+
+    <header class="page-header">
+      <span class="label">01 / WORK</span>
+      <h1><a href="https://kallyope.com/">Kallyope</a></h1>
+      <p class="tagline">Computational Scientist</p>
+      <span class="badge">COMPUTATIONAL SCIENTIST</span>
+    </header>
+
+    <div class="content">
+      <p class="lead">
+        Worked as a Computational Scientist developing ML approaches for single-cell genomics in drug
+        discovery. I built analysis pipelines supporting the gut-brain axis research program, contributing
+        to strategic partnerships and clinical milestone achievements. Co-authored publication in
+        <a href="https://www.cell.com/cell-metabolism/abstract/S1550-4131(25)00485-1">Cell Metabolism</a>.
+      </p>
+
+      <div class="section">
+        <h2>Single-Cell Genomics &amp; Drug Discovery</h2>
+        <p>
+          Developed and applied ML approaches for single-cell genomics to support drug discovery
+          efforts. Built end-to-end analysis pipelines that translated raw sequencing data into
+          actionable biological insights, enabling the research team to identify novel targets and
+          characterize cellular populations at scale.
+        </p>
+      </div>
+
+      <div class="section">
+        <h2>Gut-Brain Axis Research Program</h2>
+        <p>
+          Contributed computational expertise to Kallyope's core gut-brain axis research program.
+          Kallyope's work centers on the enteric nervous system and its role in communicating with
+          the brain — a novel pathway for therapeutic intervention. My analysis pipelines directly
+          supported experimental design and hypothesis validation within this program.
+        </p>
+      </div>
+
+      <div class="section">
+        <h2>Strategic Partnerships &amp; Clinical Milestones</h2>
+        <p>
+          Contributed to strategic partnerships and the achievement of clinical milestones, bridging
+          computational findings with broader organizational goals and external collaborator needs.
+        </p>
+      </div>
+
+      <div class="section">
+        <h2>Publication</h2>
+        <p>
+          Co-authored <a href="https://www.cell.com/cell-metabolism/abstract/S1550-4131(25)00485-1">Gut
+          enteroendocrine cell activation using GPR119 and GPR40 agonists for synergistic hormone
+          secretion</a> in <em>Cell Metabolism</em>, 2026.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <Footer />
+</Base>
+
+<style>
+  .wrap {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 40px 40px 80px;
+  }
+
+  .back {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    color: var(--t3);
+    text-decoration: none;
+    text-transform: uppercase;
+    margin-bottom: 48px;
+    transition: color 0.15s;
+  }
+
+  .back:hover {
+    color: var(--ww);
+    text-decoration: none;
+  }
+
+  .page-header {
+    margin-bottom: 52px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .label {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    color: var(--red);
+    margin-bottom: 16px;
+  }
+
+  h1 {
+    font-size: clamp(32px, 5vw, 56px);
+    font-weight: 200;
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+    margin-bottom: 12px;
+  }
+
+  h1 a {
+    color: var(--ww);
+    text-decoration: none;
+  }
+
+  h1 a:hover {
+    text-decoration: none;
+    color: var(--ww);
+  }
+
+  .tagline {
+    font-size: 16px;
+    color: var(--t2);
+    margin-bottom: 16px;
+  }
+
+  .badge {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    color: var(--t3);
+    border: 1px solid var(--line);
+    border-radius: 9999px;
+    padding: 5px 10px;
+    text-transform: uppercase;
+  }
+
+  .lead {
+    font-size: 17px;
+    line-height: 1.65;
+    color: var(--t2);
+    max-width: 680px;
+    margin-bottom: 52px;
+  }
+
+  .content {
+    max-width: 680px;
+  }
+
+  .section {
+    margin-bottom: 44px;
+    padding-bottom: 44px;
+    border-bottom: 1px solid var(--line-faint);
+  }
+
+  .section:last-child {
+    border-bottom: none;
+  }
+
+  h2 {
+    font-size: 20px;
+    font-weight: 300;
+    letter-spacing: -0.01em;
+    color: var(--ww);
+    margin-bottom: 14px;
+  }
+
+  p {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--t2);
+  }
+
+  a {
+    color: var(--red);
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+
+  em {
+    font-style: italic;
+  }
+
+  @media (max-width: 600px) {
+    .wrap {
+      padding: 24px 20px 60px;
+    }
+  }
+</style>

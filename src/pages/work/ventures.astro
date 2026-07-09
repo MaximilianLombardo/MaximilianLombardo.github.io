@@ -1,0 +1,182 @@
+---
+import Base from '../../layouts/Base.astro'
+import Footer from '../../components/Footer.astro'
+---
+
+<Base
+  title="Ventures — Maximilian Lombardo"
+  description="Full detail on Maximilian Lombardo's venture projects: BioKit Labs (AI-native OS for life sciences) and Kambrian Technologies (regenerative medicine SaaS pitched to a16z and Leaps by Bayer)."
+>
+  <div class="wrap">
+    <a href="/" class="back">← Back to home</a>
+
+    <header class="page-header">
+      <span class="label">01 / WORK</span>
+      <h1>Ventures</h1>
+      <p class="tagline">Independent projects &amp; startups</p>
+      <span class="badge">ONGOING</span>
+    </header>
+
+    <div class="content">
+      <div class="section">
+        <h2><a href="https://biokit-pitch.vercel.app">BioKit Labs</a></h2>
+        <p>
+          An AI-native operating system for life sciences, unifying discovery, development, and
+          deployment workflows. BioKit Labs aims to give life-sciences teams a single intelligent
+          surface for the full research-to-clinic pipeline — from data ingestion and model
+          evaluation through regulatory-ready documentation.
+        </p>
+        <p class="note">
+          <em>Contact me for investor deck access.</em>
+        </p>
+      </div>
+
+      <div class="section">
+        <h2>Kambrian Technologies</h2>
+        <p>
+          Regenerative medicine SaaS platform developed through Bay Bridge Bio's program,
+          pitched to a16z and Leaps by Bayer. Kambrian focused on enabling cell and gene therapy
+          developers with software infrastructure for process development, data management, and
+          regulatory compliance.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <Footer />
+</Base>
+
+<style>
+  .wrap {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 40px 40px 80px;
+  }
+
+  .back {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    color: var(--t3);
+    text-decoration: none;
+    text-transform: uppercase;
+    margin-bottom: 48px;
+    transition: color 0.15s;
+  }
+
+  .back:hover {
+    color: var(--ww);
+    text-decoration: none;
+  }
+
+  .page-header {
+    margin-bottom: 52px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .label {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    color: var(--red);
+    margin-bottom: 16px;
+  }
+
+  h1 {
+    font-size: clamp(32px, 5vw, 56px);
+    font-weight: 200;
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+    margin-bottom: 12px;
+  }
+
+  .tagline {
+    font-size: 16px;
+    color: var(--t2);
+    margin-bottom: 16px;
+  }
+
+  .badge {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    color: var(--t3);
+    border: 1px solid var(--line);
+    border-radius: 9999px;
+    padding: 5px 10px;
+    text-transform: uppercase;
+  }
+
+  .content {
+    max-width: 680px;
+  }
+
+  .section {
+    margin-bottom: 44px;
+    padding-bottom: 44px;
+    border-bottom: 1px solid var(--line-faint);
+  }
+
+  .section:last-child {
+    border-bottom: none;
+  }
+
+  h2 {
+    font-size: 20px;
+    font-weight: 300;
+    letter-spacing: -0.01em;
+    color: var(--ww);
+    margin-bottom: 14px;
+  }
+
+  h2 a {
+    color: var(--ww);
+    text-decoration: none;
+  }
+
+  h2 a:hover {
+    color: var(--red);
+    text-decoration: none;
+  }
+
+  p {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--t2);
+  }
+
+  p + p {
+    margin-top: 12px;
+  }
+
+  .note {
+    color: var(--t3);
+    font-size: 14px;
+  }
+
+  a {
+    color: var(--red);
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+
+  em {
+    font-style: italic;
+  }
+
+  @media (max-width: 600px) {
+    .wrap {
+      padding: 24px 20px 60px;
+    }
+  }
+</style>

@@ -1,0 +1,204 @@
+---
+import Base from '../../layouts/Base.astro'
+import Footer from '../../components/Footer.astro'
+---
+
+<Base
+  title="Biohub — Maximilian Lombardo"
+  description="Full detail on Maximilian Lombardo's product work at Chan Zuckerberg Biohub: CELLxGENE, Foundation Models & Virtual Cells Platform, VariantFormer, Automated Annotation Engine, and strategic biosafety work."
+>
+  <div class="wrap">
+    <a href="/" class="back">← Back to home</a>
+
+    <header class="page-header">
+      <span class="label">01 / WORK</span>
+      <h1><a href="https://www.czbiohub.org/">Biohub</a> <span class="muted">/ CZI</span></h1>
+      <p class="tagline">Product for AI research &amp; cell science</p>
+      <span class="badge">CURRENT</span>
+    </header>
+
+    <div class="content">
+      <p class="lead">
+        At Biohub (formerly <a href="https://chanzuckerberg.com/">Chan Zuckerberg Initiative</a>), I work
+        on product for AI research and cell science, collaborating with computational biologists, ML
+        researchers, and engineers.
+      </p>
+
+      <div class="section">
+        <h2>CELLxGENE</h2>
+        <p>
+          Partnered with product leadership to define vision for <a href="https://cellxgene.cziscience.com/">CELLxGENE</a>,
+          translating scientific requirements into roadmaps and specifications. Led cross-functional teams
+          to deliver the visualization, data discovery, and API tools for AI models, embeddings, and data
+          access, validating features via prototyping, model evaluation, and UX research.
+        </p>
+      </div>
+
+      <div class="section">
+        <h2>Foundation Models &amp; Virtual Cells Platform</h2>
+        <p>
+          Delivered biological foundation models to our <a href="https://virtualcellmodels.cziscience.com/">Virtual Cells Platform</a>,
+          evolving from external model curation to orchestrating internal releases that bridged AI Research,
+          Engineering, and Product. For <a href="https://github.com/czi-ai/variantformer">VariantFormer</a>,
+          leveraged Claude Code to engineer the technical GTM suite including interactive model playgrounds
+          and Remotion videos.
+        </p>
+      </div>
+
+      <div class="section">
+        <h2>Automated Annotation Engine</h2>
+        <p>
+          Led 0-1 build of an automated annotation engine, delivering the model (VAE/Logistic Regression)
+          and UI.
+        </p>
+      </div>
+
+      <div class="section">
+        <h2>Strategic Work</h2>
+        <p>
+          Developed strategic biosafety briefings that CZI leadership presented to the
+          <a href="https://www.frontiermodelforum.org/">Frontier Model Forum</a>. Co-organized
+          <a href="https://scverse.org/">scverse</a> (with NVIDIA, TileDB) and represented the
+          organization at <a href="https://neurips.cc/">NeurIPS</a>.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <Footer />
+</Base>
+
+<style>
+  .wrap {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 40px 40px 80px;
+  }
+
+  .back {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    color: var(--t3);
+    text-decoration: none;
+    text-transform: uppercase;
+    margin-bottom: 48px;
+    transition: color 0.15s;
+  }
+
+  .back:hover {
+    color: var(--ww);
+    text-decoration: none;
+  }
+
+  .page-header {
+    margin-bottom: 52px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .label {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    color: var(--red);
+    margin-bottom: 16px;
+  }
+
+  h1 {
+    font-size: clamp(32px, 5vw, 56px);
+    font-weight: 200;
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+    margin-bottom: 12px;
+  }
+
+  h1 a {
+    color: var(--ww);
+    text-decoration: none;
+  }
+
+  h1 a:hover {
+    text-decoration: none;
+    color: var(--ww);
+  }
+
+  .muted {
+    color: var(--red);
+    font-weight: 300;
+  }
+
+  .tagline {
+    font-size: 16px;
+    color: var(--t2);
+    margin-bottom: 16px;
+  }
+
+  .badge {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    color: var(--red);
+    border: 1px solid color-mix(in srgb, var(--red) 40%, transparent);
+    border-radius: 9999px;
+    padding: 5px 10px;
+    text-transform: uppercase;
+  }
+
+  .lead {
+    font-size: 17px;
+    line-height: 1.65;
+    color: var(--t2);
+    max-width: 680px;
+    margin-bottom: 52px;
+  }
+
+  .content {
+    max-width: 680px;
+  }
+
+  .section {
+    margin-bottom: 44px;
+    padding-bottom: 44px;
+    border-bottom: 1px solid var(--line-faint);
+  }
+
+  .section:last-child {
+    border-bottom: none;
+  }
+
+  h2 {
+    font-size: 20px;
+    font-weight: 300;
+    letter-spacing: -0.01em;
+    color: var(--ww);
+    margin-bottom: 14px;
+  }
+
+  p {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--t2);
+  }
+
+  a {
+    color: var(--red);
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+
+  @media (max-width: 600px) {
+    .wrap {
+      padding: 24px 20px 60px;
+    }
+  }
+</style>
