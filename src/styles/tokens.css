@@ -16,6 +16,7 @@
   --t2:   #C4BFB3;   /* body text */
   --t3:   #8A8680;   /* labels / meta */
   --line: #1F1F1F;   /* hairline */
+  --line-faint: #141414;   /* inner dividers */
   --grid: rgba(247,242,232,.045);
   --red:  #FF1E2D;   /* accent */
   --scrim: rgba(0,0,0,.6);
