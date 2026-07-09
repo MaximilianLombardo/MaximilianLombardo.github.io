@@ -39,6 +39,7 @@
     "@types/react-dom": "^19.2.3",
     "@types/three": "^0.185.1",
     "typescript": "^5.9.3",
-    "vite-plugin-glsl": "^1.6.0"
+    "vite-plugin-glsl": "^1.6.0",
+    "vitest": "^4.1.10"
   }
 }
