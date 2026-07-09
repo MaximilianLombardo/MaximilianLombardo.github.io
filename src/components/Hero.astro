@@ -165,9 +165,35 @@ import TopoHero from './TopoHero'
     white-space: nowrap;
   }
 
-  @media (max-width: 520px) {
+  @media (max-width: 600px) {
+    /* Center the hero vertically + horizontally on mobile */
+    .hero {
+      align-items: center;
+    }
+
     .content-wrap {
-      padding: 0 20px 56px;
+      padding: 0 24px;
+      text-align: center;
+    }
+
+    .redtick {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .lede {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* Even, centered darkening (replaces the left-side vignette) */
+    .veil {
+      background: radial-gradient(
+        130% 90% at 50% 50%,
+        rgba(0, 0, 0, 0.72) 0%,
+        rgba(0, 0, 0, 0.45) 55%,
+        rgba(0, 0, 0, 0.2) 100%
+      );
     }
   }
 </style>
