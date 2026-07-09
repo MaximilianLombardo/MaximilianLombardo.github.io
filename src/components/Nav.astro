@@ -6,11 +6,15 @@
   <div class="wrap">
     <a href="/" class="brand" aria-label="Maximilian Lombardo — home">
       <svg class="logo" viewBox="0 0 32 32" aria-hidden="true">
-        <line class="s w" x1="5" y1="24" x2="5" y2="9" />
-        <line class="s r" x1="5" y1="9" x2="14" y2="18" />
-        <line class="s w" x1="14" y1="18" x2="23" y2="9" />
-        <line class="s r" x1="23" y1="9" x2="23" y2="24" />
-        <line class="s w" x1="23" y1="24" x2="30" y2="24" />
+        <!-- red isometric extrusion (behind) -->
+        <polyline class="ext" points="8,22.5 8,9.5 15,16.5 22,9.5 22,22.5" />
+        <line class="ext" x1="7" y1="23" x2="8" y2="22.5" />
+        <line class="ext" x1="7" y1="10" x2="8" y2="9.5" />
+        <line class="ext" x1="14" y1="17" x2="15" y2="16.5" />
+        <line class="ext" x1="21" y1="10" x2="22" y2="9.5" />
+        <line class="ext" x1="21" y1="23" x2="22" y2="22.5" />
+        <!-- white front M -->
+        <polyline class="front" points="7,23 7,10 14,17 21,10 21,23" />
       </svg>
     </a>
     <span class="nlinks">
@@ -54,23 +58,25 @@
 
   .logo {
     display: block;
-    width: 28px;
-    height: 28px;
+    width: 34px;
+    height: 34px;
     overflow: visible;
   }
 
-  .logo .s {
+  .logo .ext {
     fill: none;
-    stroke-width: 3.8;
-    stroke-linecap: round;
-  }
-
-  .logo .w {
-    stroke: var(--ww);
-  }
-
-  .logo .r {
     stroke: var(--red);
+    stroke-width: 3;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .logo .front {
+    fill: none;
+    stroke: var(--ww);
+    stroke-width: 3;
+    stroke-linecap: round;
+    stroke-linejoin: round;
   }
 
   .nlinks {
