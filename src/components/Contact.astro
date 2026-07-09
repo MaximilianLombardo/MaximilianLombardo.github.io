@@ -1,0 +1,103 @@
+---
+---
+
+<h2>Let's build something.</h2>
+
+<div class="clist">
+  <div class="crow">
+    <span class="k">Email</span>
+    <span class="v">
+      <a id="email-link" href="#">email me</a>
+      <noscript>
+        <a href="https://www.linkedin.com/in/maximilianlombardo">Find me on LinkedIn</a>
+      </noscript>
+    </span>
+  </div>
+  <div class="crow">
+    <span class="k">GitHub</span>
+    <span class="v">
+      <a href="https://github.com/MaximilianLombardo" target="_blank" rel="noopener noreferrer">@MaximilianLombardo</a>
+    </span>
+  </div>
+  <div class="crow">
+    <span class="k">LinkedIn</span>
+    <span class="v">
+      <a href="https://www.linkedin.com/in/maximilianlombardo" target="_blank" rel="noopener noreferrer">in/maximilianlombardo</a>
+    </span>
+  </div>
+  <div class="crow">
+    <span class="k">Resume</span>
+    <span class="v">
+      <a href="/resume.pdf" download><span class="red">↓</span> Download PDF</a>
+    </span>
+  </div>
+</div>
+
+<script>
+  import { assembleEmail } from '../lib/email'
+  const a = document.getElementById('email-link') as HTMLAnchorElement | null
+  if (a) {
+    const e = assembleEmail()
+    a.href = 'mailto:' + e
+    a.textContent = e
+  }
+</script>
+
+<style>
+  h2 {
+    color: var(--ww);
+    font-weight: 300;
+    font-size: clamp(24px, 3.5vw, 34px);
+    letter-spacing: -0.015em;
+    line-height: 1.12;
+    max-width: 720px;
+    margin-bottom: 24px;
+  }
+
+  .clist {
+    margin-top: 0;
+  }
+
+  .crow {
+    display: flex;
+    gap: 16px;
+    align-items: baseline;
+    padding: 12px 0;
+    border-top: 1px solid #141414;
+  }
+
+  .crow:first-child {
+    border-top: 0;
+  }
+
+  .k {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: 0.12em;
+    color: var(--t3);
+    width: 90px;
+    flex-shrink: 0;
+    text-transform: uppercase;
+  }
+
+  .v {
+    color: var(--ww);
+    font-size: 15px;
+  }
+
+  .v a {
+    color: var(--ww);
+    text-decoration: none;
+  }
+
+  .v a:hover {
+    color: var(--ww);
+    text-decoration: underline;
+  }
+
+  .red {
+    color: var(--red);
+  }
+</style>

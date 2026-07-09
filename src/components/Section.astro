@@ -1,0 +1,49 @@
+---
+interface Props {
+  n: string
+  name: string
+  id?: string
+}
+const { n, name, id } = Astro.props
+---
+
+<section id={id}>
+  <div class="shead">
+    <span class="snum">{n}</span>
+    <span class="sname">{name}</span>
+  </div>
+  <slot />
+</section>
+
+<style>
+  section {
+    padding: 78px 0;
+    border-top: 1px solid var(--line);
+  }
+
+  .shead {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 26px;
+  }
+
+  .snum {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: 0.16em;
+    color: var(--red);
+  }
+
+  .sname {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: 0.16em;
+    color: var(--t3);
+    text-transform: uppercase;
+  }
+</style>

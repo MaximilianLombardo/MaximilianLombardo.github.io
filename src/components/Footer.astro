@@ -1,0 +1,40 @@
+---
+---
+
+<footer>
+  <div class="wrap">
+    <span>© MAXIMILIAN LOMBARDO</span>
+    <span>NEW YORK, NY</span>
+  </div>
+</footer>
+
+<style>
+  footer {
+    border-top: 1px solid var(--line);
+    padding: 26px 0;
+  }
+
+  .wrap {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 40px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  span {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 400;
+    line-height: 1;
+    letter-spacing: 0.08em;
+    color: var(--t3);
+  }
+
+  @media (max-width: 500px) {
+    .wrap {
+      flex-direction: column;
+      gap: 8px;
+    }
+  }
+</style>

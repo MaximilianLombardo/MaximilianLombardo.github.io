@@ -1,0 +1,82 @@
+---
+---
+
+<div class="band">
+  <img
+    class="tex"
+    src="/posters/dither-band.webp"
+    alt=""
+    aria-hidden="true"
+  />
+  <div class="mask"></div>
+  <div class="redpoint"></div>
+  <div class="content">
+    <div class="lab">CREATIVE TECHNOLOGY</div>
+    <div class="headline">Generative art &amp; interactive systems <span class="red">→</span></div>
+  </div>
+</div>
+
+<style>
+  .band {
+    position: relative;
+    height: 200px;
+    overflow: hidden;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .tex {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.4;
+    filter: grayscale(1) brightness(0.85) contrast(1.15);
+  }
+
+  .mask {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(120% 120% at 50% 50%, transparent, rgba(0, 0, 0, 0.75));
+  }
+
+  .redpoint {
+    position: absolute;
+    inset: 0;
+    opacity: 0.35;
+    mix-blend-mode: screen;
+    background: radial-gradient(30% 60% at 62% 50%, rgba(255, 30, 45, 0.5), transparent 70%);
+  }
+
+  .content {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    text-align: center;
+  }
+
+  .lab {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: 0.22em;
+    color: var(--t3);
+  }
+
+  .headline {
+    font-weight: 300;
+    font-size: 22px;
+    color: var(--ww);
+  }
+
+  .red {
+    color: var(--red);
+  }
+</style>

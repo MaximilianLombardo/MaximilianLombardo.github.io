@@ -1,0 +1,133 @@
+---
+const roles = [
+  {
+    org: 'Biohub',
+    orgSuffix: ' / CZI',
+    when: 'CURRENT',
+    whenRed: true,
+    role: 'Product for AI research & cell science. Defined vision for CELLxGENE; delivered foundation models to the Virtual Cells Platform; led the 0→1 automated annotation engine; authored biosafety briefings presented to the Frontier Model Forum.',
+    slug: 'biohub',
+  },
+  {
+    org: 'Kallyope',
+    orgSuffix: '',
+    when: 'COMPUTATIONAL SCIENTIST',
+    whenRed: false,
+    role: 'ML for single-cell genomics in drug discovery — gut-brain axis program, strategic partnerships, co-authored publication in Cell Metabolism.',
+    slug: 'kallyope',
+  },
+  {
+    org: 'IBM · CAS',
+    orgSuffix: '',
+    when: 'ML RESEARCH INTERN',
+    whenRed: false,
+    role: 'Frameworks for multi-omics disease research.',
+    slug: 'ibm',
+  },
+  {
+    org: 'Ventures',
+    orgSuffix: '',
+    when: 'ONGOING',
+    whenRed: false,
+    roleHtml: '<strong>BioKit Labs</strong> — AI-native operating system for life sciences. <strong>Kambrian Technologies</strong> — regenerative-medicine SaaS, pitched to a16z &amp; Leaps by Bayer.',
+    slug: 'ventures',
+  },
+]
+---
+
+{roles.map((r) => (
+  <div class="exp">
+    <div>
+      <div class="org">
+        <a href={`/work/${r.slug}`}>{r.org}</a>
+        {r.orgSuffix && <span class="red">{r.orgSuffix}</span>}
+      </div>
+      <div class={`when${r.whenRed ? ' when-red' : ''}`}>{r.when}</div>
+    </div>
+    <div class="role">
+      {r.roleHtml
+        ? <Fragment set:html={r.roleHtml} />
+        : r.role}
+      {' '}<a class="more" href={`/work/${r.slug}`}>read more →</a>
+    </div>
+  </div>
+))}
+
+<style>
+  .exp {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    gap: 24px;
+    padding: 22px 0;
+    border-top: 1px solid #141414;
+  }
+
+  .exp:first-of-type {
+    border-top: 0;
+    padding-top: 6px;
+  }
+
+  .org {
+    color: var(--ww);
+    font-size: 17px;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+  }
+
+  .org a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .org a:hover {
+    color: var(--ww);
+    text-decoration: underline;
+  }
+
+  .red {
+    color: var(--red);
+  }
+
+  .when {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 400;
+    line-height: 1;
+    letter-spacing: 0.1em;
+    color: var(--t3);
+    margin-top: 8px;
+  }
+
+  .when-red {
+    color: var(--red);
+  }
+
+  .role {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--t3);
+  }
+
+  .role strong {
+    color: var(--t2);
+    font-weight: 500;
+  }
+
+  .more {
+    color: var(--red);
+    font-size: 13px;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  .more:hover {
+    text-decoration: underline;
+  }
+
+  @media (max-width: 600px) {
+    .exp {
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+  }
+</style>
