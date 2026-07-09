@@ -11,6 +11,7 @@ const pubs = [
     title: 'Defining and benchmarking open problems in single-cell analysis',
     venue: 'Nature Biotechnology',
     url: 'https://www.nature.com/articles/s41587-025-02694-w',
+    role: 'Workshop participant',
   },
   {
     year: '2024',
@@ -42,9 +43,12 @@ const pubs = [
 {pubs.map((p) => (
   <div class="pub">
     <span class="yr">{p.year}</span>
-    <a href={p.url} target="_blank" rel="noopener noreferrer">
-      {p.title} <span class="venue">— {p.venue}</span>
-    </a>
+    <span class="pub-main">
+      <a href={p.url} target="_blank" rel="noopener noreferrer">
+        {p.title} <span class="venue">— {p.venue}</span>
+      </a>
+      {p.role && <span class="role">{p.role}</span>}
+    </span>
   </div>
 ))}
 
@@ -72,11 +76,26 @@ const pubs = [
     flex-shrink: 0;
   }
 
+  .pub-main {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
   .pub a {
     color: var(--t2);
     text-decoration: none;
     font-size: 14px;
     line-height: 1.5;
+  }
+
+  .role {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--t3);
   }
 
   .pub a:hover {
