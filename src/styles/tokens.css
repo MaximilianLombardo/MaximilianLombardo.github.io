@@ -1,0 +1,91 @@
+/* ─── Fontsource: self-hosted, no external network requests ─── */
+/* Inter weights: 200, 300, 400, 500, 600 */
+@import '@fontsource/inter/200.css';
+@import '@fontsource/inter/300.css';
+@import '@fontsource/inter/400.css';
+@import '@fontsource/inter/500.css';
+@import '@fontsource/inter/600.css';
+/* JetBrains Mono weights: 400, 600 */
+@import '@fontsource/jetbrains-mono/400.css';
+@import '@fontsource/jetbrains-mono/600.css';
+
+/* ─── Design tokens ─── */
+:root {
+  --bg:   #000000;
+  --ww:   #F7F2E8;   /* warm-white: headings / key text */
+  --t2:   #C4BFB3;   /* body text */
+  --t3:   #8A8680;   /* labels / meta */
+  --line: #1F1F1F;   /* hairline */
+  --grid: rgba(247, 242, 232, 0.045);
+  --red:  #FF1E2D;   /* accent */
+
+  --font-sans: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+/* ─── Base element styles ─── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--t2);
+  font-family: var(--font-sans);
+  font-weight: 400;
+  line-height: 1.6;
+
+  /* 64 px background grid using --grid */
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 64px 64px;
+}
+
+/* ─── Headings ─── */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--ww);
+  font-family: var(--font-sans);
+  line-height: 1.15;
+}
+
+h1 { font-weight: 200; } /* hero */
+h2 { font-weight: 300; } /* section titles */
+h3 { font-weight: 300; }
+h4, h5, h6 { font-weight: 400; }
+
+/* ─── Links ─── */
+a {
+  color: var(--red);
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+/* ─── Monospace / label helper ─── */
+.mono,
+code,
+kbd,
+pre,
+samp {
+  font-family: var(--font-mono);
+  font-weight: 400;
+}
+
+/* Uppercase labels / section numbers */
+.label {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--t3);
+}
