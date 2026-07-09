@@ -1,8 +1,42 @@
 import { Canvas, useFrame, useThree } from '@react-three/fiber'
-import { useEffect, useMemo, useRef, useState } from 'react'
+import { Component, useEffect, useMemo, useRef, useState } from 'react'
+import type { ReactNode } from 'react'
 import * as THREE from 'three'
 import frag from '../shaders/topo.frag'
 import vert from '../shaders/_lib/fullscreen.vert'
+
+// Probe WebGL support without creating a full renderer.
+// Returns true if a WebGL2 (or WebGL1) context can be obtained.
+function webGLAvailable(): boolean {
+  try {
+    const canvas = document.createElement('canvas')
+    return !!(
+      canvas.getContext('webgl2') ||
+      canvas.getContext('webgl') ||
+      canvas.getContext('experimental-webgl')
+    )
+  } catch {
+    return false
+  }
+}
+
+// Silently swallow any residual React render errors from the Canvas.
+class WebGLErrorBoundary extends Component<{ children: ReactNode }, { failed: boolean }> {
+  constructor(props: { children: ReactNode }) {
+    super(props)
+    this.state = { failed: false }
+  }
+  static getDerivedStateFromError() {
+    return { failed: true }
+  }
+  componentDidCatch() {
+    // intentionally silent — poster is the fallback
+  }
+  render() {
+    if (this.state.failed) return null
+    return this.props.children
+  }
+}
 
 // Inner scene component — lives inside Canvas context
 function TopoScene() {
@@ -56,7 +90,14 @@ export default function TopoHero() {
 
   // frameloop is 'never' when reduced-motion OR when we pause it externally
   const [renderActive, setRenderActive] = useState(!prefersReduced)
+  // null = not yet probed (SSR safe); true/false = probe result
+  const [hasWebGL, setHasWebGL] = useState<boolean | null>(null)
   const wrapperRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    // Probe WebGL on the client before mounting the Canvas at all.
+    setHasWebGL(webGLAvailable())
+  }, [])
 
   useEffect(() => {
     if (prefersReduced) return // already frozen; no observers needed
@@ -95,18 +136,22 @@ export default function TopoHero() {
       ref={wrapperRef}
       style={{ position: 'absolute', inset: 0, pointerEvents: 'none' }}
     >
-      <Canvas
-        aria-hidden="true"
-        // Start frameloop according to reduced-motion; PauseController refines
-        // it inside the Canvas context once mounted.
-        frameloop={renderActive ? 'always' : 'never'}
-        dpr={[1, 1.5]}
-        gl={{ antialias: false, powerPreference: 'high-performance' }}
-        style={{ position: 'absolute', inset: 0 }}
-      >
-        <PauseController active={renderActive} />
-        <TopoScene />
-      </Canvas>
+      {hasWebGL && (
+        <WebGLErrorBoundary>
+          <Canvas
+            aria-hidden="true"
+            // Start frameloop according to reduced-motion; PauseController refines
+            // it inside the Canvas context once mounted.
+            frameloop={renderActive ? 'always' : 'never'}
+            dpr={[1, 1.5]}
+            gl={{ antialias: false, powerPreference: 'high-performance' }}
+            style={{ position: 'absolute', inset: 0 }}
+          >
+            <PauseController active={renderActive} />
+            <TopoScene />
+          </Canvas>
+        </WebGLErrorBoundary>
+      )}
     </div>
   )
 }
