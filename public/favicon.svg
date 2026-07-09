@@ -1,8 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
-  <!-- Warm-white "M" drawn as a stroke (font-independent, legible at 16px) -->
-  <polyline points="5,25 5,8 14.5,19 24,8 24,25"
-    fill="none" stroke="#F7F2E8" stroke-width="3.4"
-    stroke-linecap="round" stroke-linejoin="round"/>
-  <!-- Red accent dot -->
-  <circle cx="28" cy="6" r="3" fill="#FF1E2D"/>
+  <!-- ML monogram: M-L stroke path with alternating white/red segments -->
+  <g fill="none" stroke-width="3.8" stroke-linecap="round">
+    <line x1="5" y1="24" x2="5" y2="9" stroke="#F7F2E8"/>
+    <line x1="5" y1="9" x2="14" y2="18" stroke="#FF1E2D"/>
+    <line x1="14" y1="18" x2="23" y2="9" stroke="#F7F2E8"/>
+    <line x1="23" y1="9" x2="23" y2="24" stroke="#FF1E2D"/>
+    <line x1="23" y1="24" x2="30" y2="24" stroke="#F7F2E8"/>
+  </g>
 </svg>

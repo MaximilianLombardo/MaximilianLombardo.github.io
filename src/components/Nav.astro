@@ -6,14 +6,11 @@
   <div class="wrap">
     <a href="/" class="brand" aria-label="Maximilian Lombardo — home">
       <svg class="logo" viewBox="0 0 32 32" aria-hidden="true">
-        <polyline
-          points="5,25 5,8 14.5,19 24,8 24,25"
-          fill="none"
-          stroke-width="3.4"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        />
-        <circle class="dot" cx="28" cy="6" r="3" />
+        <line class="s w" x1="5" y1="24" x2="5" y2="9" />
+        <line class="s r" x1="5" y1="9" x2="14" y2="18" />
+        <line class="s w" x1="14" y1="18" x2="23" y2="9" />
+        <line class="s r" x1="23" y1="9" x2="23" y2="24" />
+        <line class="s w" x1="23" y1="24" x2="30" y2="24" />
       </svg>
     </a>
     <span class="nlinks">
@@ -62,13 +59,18 @@
     overflow: visible;
   }
 
-  .logo polyline {
-    stroke: var(--ww);
-    transition: stroke 0.15s;
+  .logo .s {
+    fill: none;
+    stroke-width: 3.8;
+    stroke-linecap: round;
   }
 
-  .logo .dot {
-    fill: var(--red);
+  .logo .w {
+    stroke: var(--ww);
+  }
+
+  .logo .r {
+    stroke: var(--red);
   }
 
   .nlinks {
