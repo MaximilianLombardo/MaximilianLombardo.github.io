@@ -6,7 +6,7 @@ import vert from '../shaders/_lib/fullscreen.vert'
 
 // Inner scene component — lives inside Canvas context
 function TopoScene() {
-  const { size, setFrameloop } = useThree()
+  const { size } = useThree()
   const uniforms = useMemo(
     () => ({
       uTime:       { value: 0 },
