@@ -3,7 +3,7 @@ import TopoHero from './TopoHero'
 ---
 
 <header class="hero">
-  {/* Base layer: poster — shows instantly, serves as fallback */}
+  {/* Base layer: poster, shows instantly and serves as fallback */}
   <img
     class="poster"
     src="/posters/topo-hero.webp"
@@ -30,7 +30,7 @@ import TopoHero from './TopoHero'
       <div class="redtick" aria-hidden="true"></div>
       <p class="tagline mono">Product · Biological AI &amp; Foundation Models · Creative Technologist</p>
       <h1>Maximilian L<span class="o">o</span>mbardo</h1>
-      <p class="lede">I build systems that enable scientific discovery — at the intersection of product, biological AI, and creative technology.</p>
+      <p class="lede">I build systems that enable scientific discovery, at the intersection of product, biological AI, and creative technology.</p>
     </div>
   </div>
 
@@ -47,7 +47,7 @@ import TopoHero from './TopoHero'
     align-items: flex-end;
   }
 
-  /* Poster — base layer, always visible */
+  /* Poster: base layer, always visible */
   .poster {
     position: absolute;
     inset: 0;
@@ -59,7 +59,7 @@ import TopoHero from './TopoHero'
     z-index: 0;
   }
 
-  /* Shader canvas wrapper — fades in above poster */
+  /* Shader canvas wrapper, fades in above poster */
   .shader-wrap {
     position: absolute;
     inset: 0;
@@ -80,7 +80,7 @@ import TopoHero from './TopoHero'
     }
   }
 
-  /* Left vignette — dark left side for text legibility */
+  /* Left vignette: dark left side for text legibility */
   .veil {
     position: absolute;
     inset: 0;

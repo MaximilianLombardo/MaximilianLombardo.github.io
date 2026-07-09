@@ -30,7 +30,7 @@ class WebGLErrorBoundary extends Component<{ children: ReactNode }, { failed: bo
     return { failed: true }
   }
   componentDidCatch() {
-    // intentionally silent — poster is the fallback
+    // intentionally silent; poster is the fallback
   }
   render() {
     if (this.state.failed) return null
@@ -38,7 +38,7 @@ class WebGLErrorBoundary extends Component<{ children: ReactNode }, { failed: bo
   }
 }
 
-// Inner scene component — lives inside Canvas context
+// Inner scene component, lives inside Canvas context
 function TopoScene() {
   const { size } = useThree()
   const uniforms = useMemo(
@@ -74,7 +74,7 @@ function TopoScene() {
   )
 }
 
-// Pause controller — lives inside Canvas context so it can call useThree
+// Pause controller, lives inside Canvas context so it can call useThree
 function PauseController({ active }: { active: boolean }) {
   const { setFrameloop } = useThree()
   useEffect(() => {
