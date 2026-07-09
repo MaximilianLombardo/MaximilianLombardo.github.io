@@ -1,0 +1,102 @@
+---
+// Nav.astro — sticky translucent top bar
+---
+
+<nav>
+  <div class="wrap">
+    <a href="/" class="brand">Maximilian L<span class="o">o</span>mbardo</a>
+    <span class="nlinks">
+      <a href="#work">WORK</a>
+      <a href="#pubs">PUBLICATIONS</a>
+      <a href="#contact">CONTACT</a>
+      <a href="/resume.pdf" class="res">RESUME ↓</a>
+    </span>
+  </div>
+</nav>
+
+<style>
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    background: rgba(0, 0, 0, 0.6);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .wrap {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 60px;
+  }
+
+  .brand {
+    color: var(--ww);
+    font-size: 15px;
+    letter-spacing: -0.01em;
+    text-decoration: none;
+    font-family: var(--font-sans);
+    font-weight: 400;
+  }
+
+  .brand:hover {
+    text-decoration: none;
+  }
+
+  .brand .o {
+    color: var(--red);
+  }
+
+  .nlinks {
+    display: flex;
+    align-items: center;
+    gap: 0;
+  }
+
+  .nlinks a {
+    color: var(--t3);
+    text-decoration: none;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: 0.12em;
+    margin-left: 22px;
+    transition: color 0.15s;
+  }
+
+  .nlinks a:hover {
+    color: var(--ww);
+    text-decoration: none;
+  }
+
+  .nlinks a.res {
+    color: var(--red);
+  }
+
+  .nlinks a.res:hover {
+    color: var(--ww);
+  }
+
+  @media (max-width: 520px) {
+    .wrap {
+      padding: 0 20px;
+    }
+
+    .nlinks a {
+      margin-left: 14px;
+      font-size: 9px;
+      letter-spacing: 0.08em;
+    }
+
+    /* Hide PUBLICATIONS on very small screens */
+    .nlinks a:nth-child(2) {
+      display: none;
+    }
+  }
+</style>

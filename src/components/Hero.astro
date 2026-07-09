@@ -1,0 +1,173 @@
+---
+import TopoHero from './TopoHero'
+---
+
+<header class="hero">
+  {/* Base layer: poster — shows instantly, serves as fallback */}
+  <img
+    class="poster"
+    src="/posters/topo-hero.webp"
+    alt=""
+    aria-hidden="true"
+    loading="eager"
+    fetchpriority="high"
+  />
+
+  {/* Shader island fades in above the poster after ~400 ms */}
+  <div class="shader-wrap">
+    <TopoHero client:visible />
+  </div>
+
+  {/* Left-to-right vignette for text legibility */}
+  <div class="veil" aria-hidden="true"></div>
+
+  {/* Bottom-to-top fade to solid black */}
+  <div class="veil2" aria-hidden="true"></div>
+
+  {/* Copy block */}
+  <div class="content-wrap">
+    <div class="inner">
+      <div class="redtick" aria-hidden="true"></div>
+      <p class="tagline mono">Product · Biological AI &amp; Foundation Models · Creative Technologist</p>
+      <h1>Maximilian L<span class="o">o</span>mbardo</h1>
+      <p class="lede">I build systems that enable scientific discovery — at the intersection of product, biological AI, and creative technology.</p>
+    </div>
+  </div>
+
+  <div class="scrollcue mono" aria-label="Scroll down">SCROLL ↓</div>
+</header>
+
+<style>
+  .hero {
+    position: relative;
+    min-height: 88vh;
+    min-height: 88dvh;
+    overflow: hidden;
+    display: flex;
+    align-items: flex-end;
+  }
+
+  /* Poster — base layer, always visible */
+  .poster {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    z-index: 0;
+  }
+
+  /* Shader canvas wrapper — fades in above poster */
+  .shader-wrap {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    opacity: 0;
+    animation: shader-fadein 0.8s ease 0.4s forwards;
+  }
+
+  @keyframes shader-fadein {
+    to { opacity: 1; }
+  }
+
+  /* Respect reduced-motion: skip animation, show at full opacity immediately */
+  @media (prefers-reduced-motion: reduce) {
+    .shader-wrap {
+      animation: none;
+      opacity: 1;
+    }
+  }
+
+  /* Left vignette — dark left side for text legibility */
+  .veil {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    background: linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0.9) 0%,
+      rgba(0, 0, 0, 0.5) 45%,
+      rgba(0, 0, 0, 0.1) 100%
+    );
+  }
+
+  /* Bottom fade to black */
+  .veil2 {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    background: linear-gradient(0deg, #000 2%, transparent 40%);
+  }
+
+  /* Content sits above all art layers */
+  .content-wrap {
+    position: relative;
+    z-index: 3;
+    width: 100%;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 40px 64px;
+  }
+
+  .redtick {
+    width: 34px;
+    height: 2px;
+    background: var(--red);
+    margin-bottom: 22px;
+  }
+
+  .tagline {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    color: var(--t2);
+    text-transform: uppercase;
+    line-height: 1;
+  }
+
+  h1 {
+    font-family: var(--font-sans);
+    font-weight: 200;
+    font-size: clamp(44px, 8vw, 88px);
+    line-height: 0.98;
+    letter-spacing: -0.03em;
+    color: var(--ww);
+    margin: 20px 0 18px;
+  }
+
+  h1 .o {
+    color: var(--red);
+  }
+
+  .lede {
+    font-family: var(--font-sans);
+    font-weight: 300;
+    font-size: clamp(15px, 2vw, 18px);
+    line-height: 1.5;
+    color: var(--t2);
+    max-width: 520px;
+  }
+
+  .scrollcue {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 3;
+    font-family: var(--font-mono);
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    color: var(--t3);
+    white-space: nowrap;
+  }
+
+  @media (max-width: 520px) {
+    .content-wrap {
+      padding: 0 20px 56px;
+    }
+  }
+</style>
