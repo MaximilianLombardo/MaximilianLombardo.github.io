@@ -18,6 +18,7 @@
   --line: #1F1F1F;   /* hairline */
   --grid: rgba(247,242,232,.045);
   --red:  #FF1E2D;   /* accent */
+  --scrim: rgba(0,0,0,.6);
 
   --font-sans: 'Inter', sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
